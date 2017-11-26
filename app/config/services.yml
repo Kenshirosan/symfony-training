@@ -1,0 +1,12 @@
+services:
+    wsse.security.authentication.provider:
+        class: AppBundle\Security\Authentication\Provider\WsseProvider
+        arguments:
+            - '' # User Provider
+            - '@cache.app'
+        public: false
+
+    wsse.security.authentication.listener:
+        class: AppBundle\Security\Firewall\WsseListener
+        arguments: ['@security.token_storage', '@security.authentication.manager']
+        public: false

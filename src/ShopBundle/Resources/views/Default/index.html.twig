@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+	{% block body %}
+
+	{% include 'includes/flash.twig.html' %}
+	<div class="col-md-12">
+		<a href="{{ url('create_product') }}" class="btn btn-primary">Create a product</a>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-8">
+		<h1>Create a category</h1>
+			{% include 'includes/categoryForm.twig.html' %}
+		</div>
+	</div>
+	<hr>
+
+	<div class="row">
+		<div class="col-md-8">
+			{% for product in products %}
+				{% include 'ShopBundle:Default:show.html.twig' with {'products': products }%}
+			{% endfor %}
+		</div>
+
+		<div class="col-md-4">
+			{% for category in categories %}
+				<p class="text-info">{{ category.title }}</p>
+			{% endfor %}
+		</div>
+	</div>
+	{% endblock %}
+

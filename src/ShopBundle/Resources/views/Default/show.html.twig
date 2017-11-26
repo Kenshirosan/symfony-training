@@ -1,0 +1,22 @@
+<h1 class="text-info">{{ product.title | upper }} ({{ product.price }} €)</h1>
+<p>
+    <small>Dans la catégorie
+        <strong>{{ product.category.title }}</strong>
+    </small>
+</p>
+<img src="{{ asset('uploads/img/' ~ product.image) }}" style="width:200px;" alt="{{ product.image }}" class="img-responsive">
+<div class="row">
+    <div class="col-md-8">
+        <p>{{ product.description | nl2br }}</p>
+        <p> {{ product.description | slice(0, 50) }}...</p>
+    </div>
+    <div class="col-md-4">
+        {% if product.comments | length == 0 %}
+           <p>Aucun commentaire, Soyez le premier</p>
+        {% else %}
+            <small>{{ product.comments | length }}</small>
+        {% endif %}
+    </div>
+</div>
+<hr>
+
